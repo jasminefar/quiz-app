@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Question {{ question_number }} of {{ total_questions }}</h1>
+        <form action="{{ url_for('answer') }}" method="POST">
+            <p>{{ question }}</p>
+            {% for option in options %}
+            <label>
+                <input type="radio" name="answer" value="{{ option }}" required>
+                {{ option }}
+            </label>
+            {% endfor %}
+            <button type="submit">Submit Answer</button>
+        </form>
+    </div>
+</body>
+</html>
